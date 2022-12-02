@@ -1,4 +1,4 @@
-from aoc.input import get_input
+from aoc.input import *
 import copy
 import itertools
 import time
@@ -14,13 +14,15 @@ def pw(line):
 
 def p1():
     inp = get_input(pw)
-    for sample in inp:
-        print(sample)
-    return inp
+    elves = group_by_rmpty_line(inp, lambda x: sum(map(int, x)))
+    elves = sorted(elves, reverse=True)
+    print(elves[0])
+    print(len(elves))
+    return elves
 
 
-def p2(segments):
-    print(len(segments))
+def p2(elves):
+    print(sum(elves[0:3]))
     return 0
 
 
