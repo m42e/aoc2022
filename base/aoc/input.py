@@ -10,6 +10,21 @@ def parse_args():
     return parser.parse_known_args()
 
 
+def group_by_empty_line(input, aggreagate=list):
+    groups = []
+    group = []
+    for i in input:
+        i = i.strip()
+        if i == "":
+            groups.append(aggreagate(group))
+            group = []
+        else:
+            group.append(i)
+    groups.append(aggreagate(group))
+    return groups
+
+
+
 def get_input(transform, split=None, transform2=None, ignore=None):
     p = parse_args()[0]
     if p.input:
