@@ -11,17 +11,43 @@ import functools
 def pw(line):
     return line.strip()
 
+
 # group_by_empty_line
+
 
 def p1():
     inp = get_input(pw)
+    count = 0
     for sample in inp:
-        print(sample)
+        a, b = map(set, (sample[: len(sample) // 2], sample[len(sample) // 2 :]))
+
+        for m in b.intersection(a):
+            if ord(m) > ord("Z"):
+                count += ord(m) - ord("a") + 1
+            else:
+                count += ord(m) - ord("A") + 27
+    print(count)
     return inp
 
 
-def p2(segments):
-    print(len(segments))
+def p2(inp):
+    count = 0
+
+    for i in range(0, len(inp), 3):
+        data = inp[i : i + 3]
+        ina = set(data[0])
+        inb = set(data[1])
+        inc = set(data[2])
+
+        result = ina.intersection(inb).intersection(inc)
+
+        for m in result:
+            if ord(m) > ord("Z"):
+                count += ord(m) - ord("a") + 1
+            else:
+                count += ord(m) - ord("A") + 27
+    print(count)
+
     return 0
 
 
