@@ -11,8 +11,6 @@ import functools
 def pw(line):
     return line.strip()
 
-#group_by_empty_line
-
 
 def goto_path(tree, cd):
     t = tree

@@ -38,6 +38,7 @@ def p1():
     container, instructions = group_by_empty_line(inp)
     container = parse_container(container)
 
+    #print(container)
     for sample in instructions:
         count, from_, to = parse_command(sample)
         container[to] += ''.join(reversed(container[from_][len(container[from_]) - (count) :]))
